@@ -1,0 +1,7 @@
+git Status - > Para verificar os arquivos que foram criados ou alterados.
+
+git add . - > Adicionar os arquivos no stage.
+
+git commit -m "Texto do commit" - > Enviar os arquivos do stage para o repositório passando a descrição do commit.
+
+git push - Envio para o repositório.
