@@ -1,0 +1,14 @@
+//Imprimir a data atual no console
+public class DataAtual{
+
+	public static void main(String [] args){
+
+
+		System.out.println("Rodou no JAVA - Receba Asp.net");
+
+	}
+
+
+
+
+}
