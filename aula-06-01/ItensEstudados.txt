@@ -1,0 +1,17 @@
+Qual o método que inicia a execução no JAVA?
+O que é uma Classe?
+Como criar uma Classe?
+O que é um Método?
+O que uma variável?
+O que é uma condicional (comando if)?
+O que é Herança?
+Como comparar String?
+Como receber dados do Usuario pelo console?
+Por que Tivemos que migrar do java 1 para o java 17?
+O que é compilar?
+O que é executar?
+O que é erro de compilação?
+O que é erro de execução?
+Como usar herança no java?
+Como concatenar Concatenação String?
+

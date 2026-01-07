@@ -1,0 +1,8 @@
+public class JogadorVolei{
+
+	String bracoMaisForte;
+	Double valorPorPontos;
+
+
+
+}
