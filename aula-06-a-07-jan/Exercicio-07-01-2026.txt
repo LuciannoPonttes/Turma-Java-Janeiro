@@ -1,0 +1,12 @@
+Crie um sistema de cadastro de Atletas usando os recursos e o que você aprendeu sobre orientação a objeto.
+
+Jogador de Basquete
+	Nome 
+	Idade
+	Braço mais forte
+	Valor por Pontos
+Jogador de Futsal
+	Nome
+	Idade
+	Perna mais forte
+	Valor por gols
