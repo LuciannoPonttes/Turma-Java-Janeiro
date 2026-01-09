@@ -1,3 +1,4 @@
+Parte 1 
 Crie um sistema de cadastro de Atletas usando os recursos e o que você aprendeu sobre orientação a objeto.
 
 Jogador de Basquete
@@ -10,3 +11,9 @@ Jogador de Futsal
 	Idade
 	Perna mais forte
 	Valor por gols
+
+#UTILIZAR O ECLIPSE
+-------------------------------------------------------------------
+Parte 2
+
+Utilize encapsulamento e não permita a inserção de valores negativos
