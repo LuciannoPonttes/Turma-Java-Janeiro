@@ -16,8 +16,22 @@ Jogador de Futsal
 -------------------------------------------------------------------
 Parte 2
 
-Utilize encapsulamento e não permita a inserção de valores negativos
+Utilize encapsulamento e não permita a inserção de valores negativos.
+-------------------------------------------------------------------
 
 Parte 3
 
 Calcule o pagamento dos atletas(Futsal gols * 50 e Basquete pontos *30), utilize o polimorfismo.
+
+-------------------------------------------------------------------
+Parte 4
+
+Todos os atletas devem possuir um valor de patrocínio, o valor do patrocínio deve ser com base na quantidade de gols ou pontos e salário.
+
+Jogador de Basquete
+	20% do salário e 20% da Quantidade de pontos * 3
+
+Jogador de Futsal 
+	30% do salário e 30% da Quantidade de gols * 4 
+
+# Faça da maneira que você acha mais adequado usando os princípios da orientação a objeto. 
