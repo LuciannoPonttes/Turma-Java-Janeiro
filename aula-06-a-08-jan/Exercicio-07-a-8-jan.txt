@@ -17,3 +17,7 @@ Jogador de Futsal
 Parte 2
 
 Utilize encapsulamento e não permita a inserção de valores negativos
+
+Parte 3
+
+Calcule o pagamento dos atletas(Futsal gols * 50 e Basquete pontos *30), utilize o polimorfismo.
