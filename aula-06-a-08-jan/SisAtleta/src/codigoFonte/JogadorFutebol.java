@@ -42,4 +42,12 @@ public class JogadorFutebol extends Atleta {
 		return valorPorGol;
 	}
 
+	@Override
+	protected Double calcularPatrocinio() {
+		Double vintePorCentoSalario = getSalario() * 0.2;
+		Double vintePorCentoQtdPontosxTres = (qtdGol * 0.2) * 3; 		
+		
+		return vintePorCentoSalario + vintePorCentoQtdPontosxTres;
+	}
+
 }

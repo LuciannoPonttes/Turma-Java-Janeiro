@@ -28,10 +28,10 @@ Parte 4
 
 Todos os atletas devem possuir um valor de patrocínio, o valor do patrocínio deve ser com base na quantidade de gols ou pontos e salário.
 
-Jogador de Basquete
+Jogador de Basquete(o professor usou o jogador de futebol nesse exercicio)
 	20% do salário e 20% da Quantidade de pontos * 3
 
-Jogador de Futsal 
+Jogador de Futsal (o professor usou o jogador de volei nesse exercicio)
 	30% do salário e 30% da Quantidade de gols * 4 
 
 # Faça da maneira que você acha mais adequado usando os princípios da orientação a objeto. 

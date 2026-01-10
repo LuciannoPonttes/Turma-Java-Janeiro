@@ -6,8 +6,6 @@ public class JogadorVolei extends Atleta {
 	private Double valorPorPontos;
 	private int qtdPonto;
 	
-	
-	
 	public String getBracoMaisForte() {
 		return bracoMaisForte;
 	}
@@ -33,6 +31,14 @@ public class JogadorVolei extends Atleta {
 	public void setQtdPonto(int qtdPonto) {
 		verificarNumeroNegativo( (double)qtdPonto);
 		this.qtdPonto = qtdPonto;
+	}
+	
+	
+	@Override
+	protected Double calcularPatrocinio() {
+		Double trintaPorCentoSalario = getSalario() * 0.3;
+		Double trintaPorCentoQtdPontosxTres = (qtdPonto * 0.3) * 4; 
+		return trintaPorCentoSalario + trintaPorCentoQtdPontosxTres;
 	}
 
 	
