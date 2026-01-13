@@ -8,12 +8,15 @@ public abstract class Atleta {
 	private Double salario;
 	
 	//Polimorfismo
+	//Todas as classes filhas(subclasses) são obrigadas a implementar os metodos de acordo com a sua necessidade
 	protected abstract  Double calcularPagamento();// Apenas a assinatura, ou seja os filhos precisam implementar o comportamento.
 	protected abstract  Double calcularPatrocinio();
 	
 	//Aqui a gente mantém a herança
+	// Todas as classes filhas(subclasse) herdam 100% o comportamento do metodo 
+	//Regra de negocio
 	public void verificarNumeroNegativo(Double valor) {
-		if(valor < 0) {
+		if(valor < 0) { 
 			
 			throw new IllegalArgumentException("O valor não pode ser negativo!!!");
 		}

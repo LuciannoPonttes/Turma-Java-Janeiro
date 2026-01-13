@@ -23,7 +23,8 @@ public class JogadorFutebol extends Atleta {
 		this.valorPorGol = valorPorGolChegando;
 	}
 
-	@Override 
+	// Metodo que a Classe (Pai) obriga a classe JogadorFutebol implementar
+	@Override // Sobrepor - SobEscrever - Escreve por cima e etc..
 	protected Double calcularPagamento() {
 			
 		return valorPorGol * qtdGol;

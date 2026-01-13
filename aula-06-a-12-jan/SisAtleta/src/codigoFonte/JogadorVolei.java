@@ -20,7 +20,7 @@ public class JogadorVolei extends Atleta {
 		this.valorPorPontos = valorPorPontos;
 		
 	}
-	
+	//Metodo que a classe pai obriga a implementar
 	@Override
 	protected Double calcularPagamento() {
 		return valorPorPontos * qtdPonto;
