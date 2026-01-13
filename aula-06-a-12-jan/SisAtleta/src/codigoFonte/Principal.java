@@ -28,9 +28,9 @@ public class Principal {
 		
 		
 		
-		do {
+		do { // Primeira possivel repetição(loop 0 da imagem)
 			// JOptionPane é uma classe do java Swing(pacote de interface gratica nativa do java)
-			//showInputDialog Ele reebe uma 
+			//showInputDialog Ele recebe uma String(via interface grafica) e retorna a String recebido pelo usuario
 			
 			String opcaoCadastroAtleta = JOptionPane.showInputDialog("Digite F para Jogador(a) de Futebol ou V para Jogador(a) de Volei: ");
 			
@@ -40,7 +40,7 @@ public class Principal {
 			
 				jogadorFutebolObjeto.setNomeAtleta(JOptionPane.showInputDialog("Qual o nome do Jogador(a) de Futebol: "));
 				
-				int idadeTemporaria;
+				int idadeTemporaria; // Variavel para receber o resultado do metodo validaInteiroEretornaInt
 				
 				do {
 					idadeTemporaria = validaInteiroEretornaInt(JOptionPane.showInputDialog("Qual a idade do Jogador(a) de Futebol:")); // NextInt para receber inteiros do console

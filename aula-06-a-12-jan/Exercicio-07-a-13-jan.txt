@@ -35,3 +35,11 @@ Jogador de Futsal (o professor usou o jogador de volei nesse exercicio)
 	30% do salário e 30% da Quantidade de gols * 4 
 
 # Faça da maneira que você acha mais adequado usando os princípios da orientação a objeto. 
+
+------------------------------------------------------------------
+Parte 5
+
+Adicione interface gráfica para receber os dados do usuário.
+Valide todos campos que são números.
+Valide onde o usuário escolhe F ou B, caso seja digitado algo diferente mostre um janela informando que deve ser B ou F. 
+
