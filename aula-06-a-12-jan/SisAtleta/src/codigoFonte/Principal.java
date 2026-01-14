@@ -31,14 +31,34 @@ public class Principal {
 		do { // Primeira possivel repetição(loop 0 da imagem)
 			// JOptionPane é uma classe do java Swing(pacote de interface gratica nativa do java)
 			//showInputDialog Ele recebe uma String(via interface grafica) e retorna a String recebido pelo usuario
+			String opcaoCadastroAtleta;
 			
-			String opcaoCadastroAtleta = JOptionPane.showInputDialog("Digite F para Jogador(a) de Futebol ou V para Jogador(a) de Volei: ");
+			boolean letraOuNao;
+			
+			do {
+				opcaoCadastroAtleta = JOptionPane.showInputDialog("Digite F para Jogador(a) de Futebol ou V para Jogador(a) de Volei: ");
+				
+				
+				letraOuNao = somenteLetras(opcaoCadastroAtleta);
+				
+			}while(!letraOuNao);
 			
 			
 			if (opcaoCadastroAtleta.equals("F")) {
 				JogadorFutebol jogadorFutebolObjeto = new JogadorFutebol();
 			
-				jogadorFutebolObjeto.setNomeAtleta(JOptionPane.showInputDialog("Qual o nome do Jogador(a) de Futebol: "));
+				
+				do {
+					
+					String nome = JOptionPane.showInputDialog("Qual o nome do Jogador(a) de Futebol: ");
+					
+					letraOuNao = somenteLetras(nome);
+					
+					if(letraOuNao) {
+						jogadorFutebolObjeto.setNomeAtleta(nome);
+					}
+				
+				}while(!letraOuNao);
 				
 				int idadeTemporaria; // Variavel para receber o resultado do metodo validaInteiroEretornaInt
 				
@@ -52,9 +72,17 @@ public class Principal {
 					
 				}while(idadeTemporaria == 0);
 				
+				do{
+					String pernaMaisForte = JOptionPane.showInputDialog("Qual a perna mais forte: ");
+					
+					
+					letraOuNao = somenteLetras(pernaMaisForte);
+					
+					if(letraOuNao) {
+						jogadorFutebolObjeto.setPernaMaisForte(pernaMaisForte);
+					}
 				
-				jogadorFutebolObjeto.setPernaMaisForte(JOptionPane.showInputDialog("Qual a perna mais forte: "));
-			
+				}while(!letraOuNao);
 				
 				double valorPorGolTemp;
 				do {
@@ -163,6 +191,7 @@ public class Principal {
 		}
 		
 		System.out.println("############Lista de Jogadores de Volei Cadastrados##############");
+		//forEach
 		for (JogadorVolei jogadorVoleiLista: jogadoresVolei) {
 			System.out.println("Nome do Jogador de Volei: " + jogadorVoleiLista.getNomeAtleta());
 			System.out.println("Idade do Jogador de Volei: " + jogadorVoleiLista.getIdade());
@@ -227,5 +256,40 @@ public class Principal {
 		
 		return numeroDecimal;
 	}
+	
+	//Esse metodo retorna verdadeiro se a String tiver apenas letras
+	public static boolean somenteLetras(String texto) {
+		
+		if(texto == null || texto.isBlank()) {
+			JOptionPane.showMessageDialog(null,"Inválido!");
+			return false;
+		}
+		//for(tradicional)
+		//texto.length() -> Conta quantos caracteres tem na String
+		//int indice = 0 -> Indica que o indice começa na posição 0
+		//indice++ -> Vai incrementar mais uma posição no valor de indice
+		// Character.isLetter Retorna verdadeiro se o Char for uma letra e falso se não for
+		//charAt recebe um inteiro e retona o Char de acordo com a posição enviada.
+		//! -> O is isLetter retorna verdadeiro, ele inverte a logica do IF para que o metodo não retorne falso
+		
+		int qtdCaracterString = texto.length();
+		
+		for(int indice = 0; indice < qtdCaracterString; indice++) {
+			
+			char caracterAtual = texto.charAt(indice);
+			
+			if(!Character.isLetter(caracterAtual)) {
+				JOptionPane.showMessageDialog(null, "Somente Letras;");
+				return false;
+				
+			}
+			
+		}
+		return true;
+		
+	}
+	
+
+
 
 }
