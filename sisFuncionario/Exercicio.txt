@@ -1,0 +1,17 @@
+Criar um sistema e cadastro de Funcionario
+
+Pessoa
+	Nome
+	Cpf
+	E-mail
+
+Supervisor Auxiliar 
+	Patio
+
+
+Assistente administrativo
+	Escritório
+
+Parte 1 
+
+Criar a interface gráfica do Menu Principal
