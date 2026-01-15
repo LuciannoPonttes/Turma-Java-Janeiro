@@ -43,3 +43,20 @@ Adicione interface gráfica para receber os dados do usuário.
 Valide todos campos que são números.
 Valide onde o usuário escolhe F ou B, caso seja digitado algo diferente mostre um janela informando que deve ser B ou F. 
 
+-----------------------------------------------------------------
+
+Parte 6
+
+Valide todas Entradas de texto não aceitem caracteres especiais. 
+-------------------------
+
+Parte 7
+
+As listas dos itens cadastrados devem aparecer em um interface gráfica.
+
+--------------------
+
+Parte 9
+
+Crie um regra de negocio que obrigue todas as subclasses de Atleta a inicializarem o objeto já com um identificador do tipo LONG
+

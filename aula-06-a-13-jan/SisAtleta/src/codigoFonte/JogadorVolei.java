@@ -2,9 +2,33 @@ package codigoFonte;
 
 public class JogadorVolei extends Atleta {
 	
+
 	private String bracoMaisForte;
 	private Double valorPorPontos;
 	private int qtdPonto;
+	/*
+	public JogadorVolei(String nomeAtletaConstrutor, int idadeAtletaConstrutor, String bracoMaisForteConstrutor, Double valorPorPontosConstrutor, int qtdPontoConstrutor) {
+		super(nomeAtletaConstrutor, idadeAtletaConstrutor);
+		this.bracoMaisForte = bracoMaisForteConstrutor;
+		this.valorPorPontos = valorPorPontosConstrutor;
+		this.qtdPonto = qtdPontoConstrutor;
+		
+	}
+
+	public JogadorVolei() {
+		super();// Indicando que vai usar a superClasse
+	}
+	
+	
+	*/
+	
+	
+	public JogadorVolei(long identificadorConstrutor) {
+		super(identificadorConstrutor);
+	}
+	
+	
+	
 	
 	public String getBracoMaisForte() {
 		return bracoMaisForte;

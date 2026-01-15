@@ -3,6 +3,7 @@ package codigoFonte;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JOptionPane;
 
@@ -31,6 +32,9 @@ public class Principal {
 		do { // Primeira possivel repetição(loop 0 da imagem)
 			// JOptionPane é uma classe do java Swing(pacote de interface gratica nativa do java)
 			//showInputDialog Ele recebe uma String(via interface grafica) e retorna a String recebido pelo usuario
+			//equalsIgnoreCase -> Para ignorar se é caixa alta ou baixa
+			//   || OR/ OU
+			
 			String opcaoCadastroAtleta;
 			
 			boolean letraOuNao;
@@ -41,13 +45,31 @@ public class Principal {
 				
 				letraOuNao = somenteLetras(opcaoCadastroAtleta);
 				
+				if(!(opcaoCadastroAtleta.equalsIgnoreCase("F") || opcaoCadastroAtleta.equalsIgnoreCase("V"))) {
+					JOptionPane.showMessageDialog(null, "Somente V ou F");
+					letraOuNao = false;
+				}
+				
 			}while(!letraOuNao);
 			
 			
-			if (opcaoCadastroAtleta.equals("F")) {
-				JogadorFutebol jogadorFutebolObjeto = new JogadorFutebol();
-			
+			if (opcaoCadastroAtleta.equalsIgnoreCase("F")) {
 				
+				
+				
+				// APENAS PARA APRENDER
+				//JogadorFutebol jogadorFutebolObjetoCompleto = new JogadorFutebol("Luciano", 23, "Esquerda", 10.0, 10 );
+				
+				//JogadorFutebol jogadorFutebolObjetoSomenteNome = new JogadorFutebol("ELAINE");
+				
+				
+				
+				long identificador = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE);// Gera um numero aleatorio
+				
+				JogadorFutebol jogadorFutebolObjeto = new JogadorFutebol(identificador);
+				
+				
+			
 				do {
 					
 					String nome = JOptionPane.showInputDialog("Qual o nome do Jogador(a) de Futebol: ");
@@ -110,13 +132,19 @@ public class Principal {
 				
 				jogadorFutebolObjeto.setPatrocinio(jogadorFutebolObjeto.calcularPatrocinio());
 				
-				
 				jogadoresFutebol.add(jogadorFutebolObjeto);
+				
+				
+			
 
 			}
 
-			if (opcaoCadastroAtleta.equals("V")) {
-				JogadorVolei jogadorVoleiObjeto = new JogadorVolei();
+			if (opcaoCadastroAtleta.equalsIgnoreCase("V")) {
+				//JogadorVolei jogadorVoleiObjeto = new JogadorVolei("JOENIO", 10, "Direito", 10.0, 20);
+				
+				long identificador = ThreadLocalRandom.current().nextLong(0, Long.MAX_VALUE);// Gera um numero aleatorio
+				
+				JogadorVolei jogadorVoleiObjeto = new JogadorVolei(identificador);
 				
 				
 				jogadorVoleiObjeto.setNomeAtleta(JOptionPane.showInputDialog("Qual o nome do Jogador(a) de Volei: "));
@@ -175,39 +203,95 @@ public class Principal {
 		}while(opcaoCadastrarMaisUm.equals("S"));
 		
 		
-		System.out.println("################Lista de Jogadores de futebol Cadastrados################");
+		
+		StringBuilder mensagem = new StringBuilder();
+		
+		mensagem.append("################Lista de Jogadores de futebol Cadastrados################\n");
+		
 		for (JogadorFutebol jogadorFutebolLista: jogadoresFutebol) {
-			System.out.println("Nome do Jogador de Futebol: " + jogadorFutebolLista.getNomeAtleta());
-			System.out.println("Idade do Jogador de Futebol: " + jogadorFutebolLista.getIdade());
-			System.out.println("Perna Mais forte do Jogador de Futebol: " + jogadorFutebolLista.getPernaMaisForte());
-			System.out.println("Valor recebido por gol: " + jogadorFutebolLista.getvalorPorGol());
-			System.out.println("Quantidade de gol: " + jogadorFutebolLista.getQtdGol());
-			System.out.println("Valor Salario: " + jogadorFutebolLista.getSalario());
-			System.out.println("O valor do patrocinio é: " + jogadorFutebolLista.getPatrocinio());
 			
-			System.out.println("----------------------------------------------------------------");
+			mensagem.append("Identificador: ")
+			.append(jogadorFutebolLista.getIdentificador())
+			.append("\n");
 			
 			
+			
+			mensagem.append("Nome do Jogador de Futebol: ")
+					.append(jogadorFutebolLista.getNomeAtleta())
+					.append("\n");
+			
+			mensagem.append("Idade do Jogador de Futebol: ")
+			.append(jogadorFutebolLista.getIdade())
+			.append("\n");
+			
+			mensagem.append("Perna Mais forte do Jogador de Futebol: ")
+			.append(jogadorFutebolLista.getPernaMaisForte())
+			.append("\n");
+			
+			mensagem.append("Valor recebido por gol: ")
+			.append(jogadorFutebolLista.getvalorPorGol())
+			.append("\n");
+			
+			mensagem.append("Quantidade de gol: ")
+			.append(jogadorFutebolLista.getQtdGol())
+			.append("\n");
+			
+			mensagem.append("Valor Salario: ")
+			.append(jogadorFutebolLista.getSalario())
+			.append("\n");
+			
+			mensagem.append("O valor do patrocinio é: ")
+			.append(jogadorFutebolLista.getPatrocinio())
+			.append("\n");
+			
+			
+			
+			
+		
+			mensagem.append("----------------------- \n ");
 		}
 		
-		System.out.println("############Lista de Jogadores de Volei Cadastrados##############");
-		//forEach
+		mensagem.append("################Lista de Jogadores de Volei Cadastrados################\n");
+		
 		for (JogadorVolei jogadorVoleiLista: jogadoresVolei) {
-			System.out.println("Nome do Jogador de Volei: " + jogadorVoleiLista.getNomeAtleta());
-			System.out.println("Idade do Jogador de Volei: " + jogadorVoleiLista.getIdade());
-			System.out.println("Braço Mais forte do Jogador de Volei: " + jogadorVoleiLista.getBracoMaisForte());
-			System.out.println("Valor recebido por pontos: " + jogadorVoleiLista.getValorPorPontos());
-			System.out.println("Quantidade de pontos: " + jogadorVoleiLista.getQtdPonto());
-			System.out.println("Valor Salario: " + jogadorVoleiLista.getSalario());
-			System.out.println("O valor do patrocinio é: " + jogadorVoleiLista.getPatrocinio());
 			
-			System.out.println("----------------------------------------------------------------");
+			mensagem.append("Identificador: ")
+			.append(jogadorVoleiLista.getIdentificador())
+			.append("\n");
 			
+			mensagem.append("Nome do Jogador de Volei: ")
+			.append(jogadorVoleiLista.getNomeAtleta())
+			.append("\n");
+			
+			mensagem.append("Idade do Jogador de Volei: ")
+			.append(jogadorVoleiLista.getIdade())
+			.append("\n");
+			
+			mensagem.append("Braço Mais forte do Jogador de Volei: ")
+			.append(jogadorVoleiLista.getBracoMaisForte())
+			.append("\n");
+			
+			mensagem.append("Valor recebido por pontos: ")
+			.append(jogadorVoleiLista.getQtdPonto())
+			.append("\n");
+			
+
+			mensagem.append("Valor Salario: ")
+			.append(jogadorVoleiLista.getSalario())
+			.append("\n");
+			
+			mensagem.append("O valor do patrocinio é: ")
+			.append(jogadorVoleiLista.getPatrocinio())
+			.append("\n");
+			
+			mensagem.append("----------------------- \n ");
 			
 		}
 		
+		JOptionPane.showMessageDialog(null, mensagem.toString(),"Lista De Atletas", JOptionPane.INFORMATION_MESSAGE);
 		
-		System.out.println("##########Encerrado########");
+		
+		
 	}
 	//Recebe a string, valida e retornar o numero inteiro
 	public static int validaInteiroEretornaInt(String numeroString) {
@@ -246,13 +330,11 @@ public class Principal {
 			try {
 				numeroDecimal = Double.parseDouble(numeroString);
 				
-				
 			}catch (Exception e) {
 				JOptionPane.showMessageDialog(null,"Apenas Numeros.");// Comunica para o usuario
 				System.out.println("O valor: " + e.getMessage() + "Não pode ser convertido para inteiro."); // Comunica para o DEV
 			}
 		}
-		
 		
 		return numeroDecimal;
 	}
@@ -281,7 +363,6 @@ public class Principal {
 			if(!Character.isLetter(caracterAtual)) {
 				JOptionPane.showMessageDialog(null, "Somente Letras;");
 				return false;
-				
 			}
 			
 		}

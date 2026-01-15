@@ -2,10 +2,45 @@ package codigoFonte;
 
 public class JogadorFutebol extends Atleta {
 	
+
 	private String pernaMaisForte;
 	private Double valorPorGol; // Para armazenar dados do tipo decimal.
 	private int qtdGol ; // Para armazenar dados do tipo decimal.
+	private long id;
+	
+	/*
+	//Esse construtor é herdado do pai
+	public JogadorFutebol(String nomeAtletaConstrutor, int idadeAtletaConstrutor, String pernaMaisForteConstrutor, Double valorPorGolConstrutor, int qtdGolConstrutor  ) {
+		
+		//Atributos da classe pai
+		super(nomeAtletaConstrutor, idadeAtletaConstrutor);
+		
+		//Atributos da classe filha
+		this.pernaMaisForte = pernaMaisForteConstrutor;
+		this.valorPorGol = valorPorGolConstrutor;
+		this.qtdGol = qtdGolConstrutor;
+		
+		
+	}
+	
+	public JogadorFutebol() {
+		super();
+	}
+	
+	public JogadorFutebol(String nomeConstrutor) {
+		super(nomeConstrutor);
+	}
 
+	
+	*/
+	
+	public JogadorFutebol(long identificadorConstrutor) {
+		super(identificadorConstrutor);
+	}
+	
+	
+
+	
 	public String getPernaMaisForte() {
 		return pernaMaisForte;
 	}
