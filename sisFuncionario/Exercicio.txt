@@ -18,4 +18,4 @@ Criar a interface gráfica do Menu Principal
 
 Parte 2
 
-Crie a tela de cadastro de gerente, receba os dados e adicione em um arquivo.
+Crie a tela de cadastro de supervisor, receba os dados e adicione em um arquivo.
