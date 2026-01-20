@@ -1,0 +1,3 @@
+O nome do gerente é: LUCIANO
+O cpf do gerente é:03184294110
+A gerencia do gerente é: gtpe
