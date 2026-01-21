@@ -1,0 +1,18 @@
+create table pessoa(
+	cpf CHAR (11) NOT NULL,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR (50),
+    PRIMARY KEY (cpf) -- Identificador da Tela(não pode existir repetido)
+
+);
+
+select * from pessoa; -- para consultar todos os itens da tabela
+
+insert into pessoa (cpf, nome, email) values ('035', 'ELAINE', 'email@teste3.com' ); -- Inserir dados
+
+DELETE FROM PESSOA
+WHERE CPF = '031'; -- Deleta dados
+
+UPDATE PESSOA -- Alterar dados
+SET EMAIL = 'TESTEUPDATE@IMPACTA.COM'
+WHERE CPF = '032';
