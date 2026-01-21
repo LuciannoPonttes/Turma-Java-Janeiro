@@ -1,0 +1,9 @@
+CREATE TABLE pessoa (
+    cpf VARCHAR(11),
+    nome VARCHAR(100),
+    email VARCHAR(100)
+); -- comando para criar uma tabela
+
+select * from pessoa; -- Comando para consultar todos os dados da tabela
+
+insert into pessoa (cpf, nome, email) values ('32', 'edu', 'email@com'); -- Para inserir dados
