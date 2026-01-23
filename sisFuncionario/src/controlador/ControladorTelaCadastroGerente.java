@@ -8,7 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import entidade.Gerente;
-import gerenciaArquivo.ManipuladorArquivo;
+import interfaceGrafica.TelaListarGerente;
+import repositorio.RepositorioGerenteImplementacao;
 
 public class ControladorTelaCadastroGerente implements ActionListener {
 
@@ -17,10 +18,11 @@ public class ControladorTelaCadastroGerente implements ActionListener {
 	JTextField gerencia;
 	JFrame frameTelaPrincipal;
 	Gerente gerente;
-	
-	ManipuladorArquivo manipuladorArquivo = new ManipuladorArquivo();
 	JFrame frameCadastroGerente;
 
+	RepositorioGerenteImplementacao repositorioGerenteImplementacao = new RepositorioGerenteImplementacao();
+	TelaListarGerente telaListarGerente = new TelaListarGerente();
+	
 	public ControladorTelaCadastroGerente(JTextField nome, JTextField cpf, JTextField gerencia,
 			JFrame frameTelaPrincipal, JFrame frameCadastroGerente) {
 		super();
@@ -33,55 +35,51 @@ public class ControladorTelaCadastroGerente implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Iniciar cadastro");
-		System.out.println(nome.getText());
-		System.out.println(cpf.getText());
-		System.out.println(gerencia.getText());
-		
-		
-		
+
 		switch (e.getActionCommand()) {
-			case "Cadastrar": {
-				
-				Gerente gerente = new Gerente();
-				gerente.setNome(nome.getText());
-				
-				if(!gerente.isCpfValido(cpf.getText())) {
-					JOptionPane.showMessageDialog(null, "CPF INVALIDO!" );
-					
-				}else {
-					gerente.setCpf(cpf.getText());
-					gerente.setGerencia(gerencia.getText());
-					
-					if(manipuladorArquivo.registrarGerente(gerente)) {
-						
-						JOptionPane.showMessageDialog(null, "O arquivo foi salvo com sucesso!!");
-						
-						nome.setText(null);
-						cpf.setText(null);
-						gerencia.setText(null);
-						
-					}else {
-						JOptionPane.showMessageDialog(null, "O arquivo não salvo com sucesso!!!!!");
-					}
+		case "Cadastrar": {
+
+			Gerente gerente = new Gerente();
+			gerente.setNome(nome.getText());
+
+			if (gerente.isCpfValido(cpf.getText())) {
+				JOptionPane.showMessageDialog(null, "CPF INVALIDO!");
+
+			} else {
+				gerente.setCpf(cpf.getText());
+				gerente.setGerencia(gerencia.getText());
+
+				if (repositorioGerenteImplementacao.salvarGerente(gerente)) {
+
+					JOptionPane.showMessageDialog(null, "Foi salvo com sucesso!!");
+
+					nome.setText(null);
+					cpf.setText(null);
+					gerencia.setText(null);
+
+				} else {
+					JOptionPane.showMessageDialog(null, "Não salvo com sucesso!!!!!");
 				}
-					
-				
-				
-				
-				break;
 			}
-			
-			case "Menu Inicial": {
-				frameCadastroGerente.setVisible(false);
-				frameTelaPrincipal.setVisible(true);
-				
-				break;
-			}
+
+			break;
 		}
-		
-		
-			
+
+		case "Menu Inicial": {
+			frameCadastroGerente.setVisible(false);
+			frameTelaPrincipal.setVisible(true);
+
+			break;
 		}
+
+		case "Listar": {
+			telaListarGerente.listarGerente(repositorioGerenteImplementacao.listarGerente()); 
+
+			break;
+		}
+
+		}
+
+	}
 
 }

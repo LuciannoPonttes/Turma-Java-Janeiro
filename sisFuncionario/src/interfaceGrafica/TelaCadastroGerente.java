@@ -50,6 +50,10 @@ public class TelaCadastroGerente {
 		JButton botaoMenuInicial = new JButton("Menu Inicial");
 		panelGerente.add(botaoMenuInicial);
 		
+		JButton botaoListar = new JButton("Listar");
+		panelGerente.add(botaoListar);
+		
+		
 	
 		frameCadastroGerente.add(panelGerente);
 		frameCadastroGerente.setLocationRelativeTo(null); // Centraliza a janela
@@ -58,6 +62,7 @@ public class TelaCadastroGerente {
 		ControladorTelaCadastroGerente controladorTelaCadastroGerente = new ControladorTelaCadastroGerente(textNome, textCpf, textGerencia, frameTelaPrincipal, frameCadastroGerente);
 		botaoCadastrarGerente.addActionListener(controladorTelaCadastroGerente);
 		botaoMenuInicial.addActionListener(controladorTelaCadastroGerente);
+		botaoListar.addActionListener(controladorTelaCadastroGerente);
 		
 	}
 

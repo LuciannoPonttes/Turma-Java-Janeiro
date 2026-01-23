@@ -15,8 +15,8 @@ public class TelaCadastroAtendente {
 	public void formularioAtendente(JFrame frameTelaPrincipal) {
 		
 
-		String nome = "Digite o nome do gerente:";
-		String cpf = "Digite o cpf do gerente:";
+		String nome = "Digite o nome do atendente:";
+		String cpf = "Digite o cpf do atendente:";
 		String setor = "Digite o setor:";
 		
 		
