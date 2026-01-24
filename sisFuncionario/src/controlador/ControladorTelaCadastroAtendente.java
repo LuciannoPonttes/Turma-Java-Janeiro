@@ -2,14 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-
 import entidade.Atendente;
-import gerenciaArquivo.ManipuladorArquivo;
-import repositorio.RepositorioAtendente;
+import interfaceGrafica.TelaListarAtendente;
 import repositorio.RepositorioAtendenteImplementacao;
 
 public class ControladorTelaCadastroAtendente implements ActionListener {
@@ -20,7 +20,7 @@ public class ControladorTelaCadastroAtendente implements ActionListener {
 	JFrame frameTelaPrincipal;
 	JFrame frameCadastroAtendente;
 	Atendente atendente = new Atendente();
-	//ManipuladorArquivo manipuladorArquivo = new ManipuladorArquivo();
+	TelaListarAtendente telaListarAtendente = new TelaListarAtendente();
 	RepositorioAtendenteImplementacao repositorioAtendenteImplementacao = new RepositorioAtendenteImplementacao();
 
 	public ControladorTelaCadastroAtendente(JTextField nome, JTextField cpf, JTextField gerencia,
@@ -58,12 +58,16 @@ public class ControladorTelaCadastroAtendente implements ActionListener {
 				}
 				break;
 	
-			}
-			case "Menu Inicial": {
-				frameCadastroAtendente.setVisible(false);
-				frameTelaPrincipal.setVisible(true);
-				break;
-			}
+				}
+				case "Menu Inicial": {
+					frameCadastroAtendente.setVisible(false);
+					frameTelaPrincipal.setVisible(true);
+					break;
+				}
+				case "Listar": {
+					telaListarAtendente.listarAtendente(repositorioAtendenteImplementacao.listarAtendente());
+					break;
+				}
 
 		}
 

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import controlador.ControladorTelaCadastroGerente;
-import controlador.ControladorTelaPrincipal;
+
 
 public class TelaCadastroGerente {
 	
@@ -18,25 +18,24 @@ public class TelaCadastroGerente {
 		String cpf = "Digite o cpf do gerente:";
 		String gerencia = "Digite a gerencia:";
 		
-		
-
 		JFrame frameCadastroGerente = new JFrame();
 		frameCadastroGerente.setSize(300 , 300);
 		
 		JPanel panelGerente = new JPanel();
+		
+		
+
+		JLabel labelCpf = new JLabel(cpf);
+		panelGerente.add(labelCpf);
+		
+		JTextField textCpf = new JTextField(10);
+		panelGerente.add(textCpf);
 		
 		JLabel labelNome = new JLabel(nome);
 		panelGerente.add(labelNome);
 		
 		JTextField textNome = new JTextField(10);
 		panelGerente.add(textNome);
-		
-		
-		JLabel labelCpf = new JLabel(cpf);
-		panelGerente.add(labelCpf);
-		
-		JTextField textCpf = new JTextField(10);
-		panelGerente.add(textCpf);
 		
 		JLabel labelGerencia = new JLabel(gerencia);
 		panelGerente.add(labelGerencia);
@@ -53,8 +52,6 @@ public class TelaCadastroGerente {
 		JButton botaoListar = new JButton("Listar");
 		panelGerente.add(botaoListar);
 		
-		
-	
 		frameCadastroGerente.add(panelGerente);
 		frameCadastroGerente.setLocationRelativeTo(null); // Centraliza a janela
 		frameCadastroGerente.setVisible(true);

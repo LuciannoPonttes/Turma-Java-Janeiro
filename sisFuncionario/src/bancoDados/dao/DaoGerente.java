@@ -11,23 +11,17 @@ import entidade.Gerente;
 
 public class DaoGerente {
 
-	public boolean salvarGerenteNobanco(Gerente gerente) {
+	public static boolean salvarGerenteNobanco(Gerente gerente) {
 		boolean salvamento = false;
 
-		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+		
 		Connection connection = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
-
 		String comandoSqlInsert = "insert into gerente (cpf, nome, gerencia) values (?, ?, ?)"; // Base do comando SQL
 
 		try {
-			connection = conexaoFabricaConexao.criarConexaoSisFuncionario(); // Recebe o objeto de conexão da
-																						// classe Fabrica de conexão
-
-			preparaOcomandoSQL = connection.prepareStatement(comandoSqlInsert);// Armazena a conexão e o
-																							// comando SQL que vai ser
-																							// preparado
-
+			connection = FabricaConexao.criarConexaoSisFuncionario(); // Recebe o objeto de conexão da																			// classe Fabrica de conex
+			preparaOcomandoSQL = connection.prepareStatement(comandoSqlInsert);// Armazena a conexão e o																			// comando SQL que vai ser
 			preparaOcomandoSQL.setString(1, gerente.getCpf());// Coloca o valor no campo cpf
 			preparaOcomandoSQL.setString(2, gerente.getNome()); // Colocar o valor no campo nome
 			preparaOcomandoSQL.setString(3, gerente.getGerencia()); // Colocar o valor no campo email
@@ -62,9 +56,9 @@ public class DaoGerente {
 
 	}
 
-	public List<Gerente> listarGerenteDoBanco() {
+	public static List<Gerente> listarGerenteDoBanco() {
 		
-		FabricaConexao conexaoFabricaConexao = new FabricaConexao();// Instacia a classe Fabrica de conexão
+		
 		Connection connection = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
 
@@ -76,7 +70,7 @@ public class DaoGerente {
 		
 		try {
 			
-			connection = conexaoFabricaConexao.criarConexaoSisFuncionario();
+			connection = FabricaConexao.criarConexaoSisFuncionario();
 			preparaOcomandoSQL = connection.prepareStatement(comandoSqlInsert);
 			
 			

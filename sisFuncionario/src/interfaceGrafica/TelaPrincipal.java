@@ -1,6 +1,6 @@
 package interfaceGrafica;
 
-import java.awt.Component;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;

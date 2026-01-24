@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import entidade.Gerente;
 import interfaceGrafica.TelaListarGerente;
 import repositorio.RepositorioGerenteImplementacao;
+import validacao.GerenteValidacao;
 
 public class ControladorTelaCadastroGerente implements ActionListener {
 
@@ -37,49 +38,45 @@ public class ControladorTelaCadastroGerente implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
-		case "Cadastrar": {
-
-			Gerente gerente = new Gerente();
-			gerente.setNome(nome.getText());
-
-			if (gerente.isCpfValido(cpf.getText())) {
-				JOptionPane.showMessageDialog(null, "CPF INVALIDO!");
-
-			} else {
+			case "Cadastrar": {
+				Gerente gerente = new Gerente();
+				gerente.setNome(nome.getText());
 				gerente.setCpf(cpf.getText());
 				gerente.setGerencia(gerencia.getText());
-
-				if (repositorioGerenteImplementacao.salvarGerente(gerente)) {
-
-					JOptionPane.showMessageDialog(null, "Foi salvo com sucesso!!");
-
-					nome.setText(null);
-					cpf.setText(null);
-					gerencia.setText(null);
-
-				} else {
-					JOptionPane.showMessageDialog(null, "Não salvo com sucesso!!!!!");
+				
+				//Pensar em refatorar mais pra frente
+				String resultadoValidacao = GerenteValidacao.validaGerente(gerente);
+				
+				if(resultadoValidacao == null) {
+					if (repositorioGerenteImplementacao.salvarGerente(gerente)) {
+						
+						JOptionPane.showMessageDialog(null, "Foi salvo com sucesso!!");
+						nome.setText(null);
+						cpf.setText(null);
+						gerencia.setText(null);
+					} else {
+						JOptionPane.showMessageDialog(null, "Não salvo com sucesso!!!!!");
+					}
+					
+				}else {
+					JOptionPane.showMessageDialog(null,resultadoValidacao );
 				}
+	
+				
+				break;
+			}
+	
+			case "Menu Inicial": {
+				frameCadastroGerente.setVisible(false);
+				frameTelaPrincipal.setVisible(true);
+				break;
+			}
+	
+			case "Listar": {
+				telaListarGerente.listarGerente(repositorioGerenteImplementacao.listarGerente());
+				break;
 			}
 
-			break;
 		}
-
-		case "Menu Inicial": {
-			frameCadastroGerente.setVisible(false);
-			frameTelaPrincipal.setVisible(true);
-
-			break;
-		}
-
-		case "Listar": {
-			telaListarGerente.listarGerente(repositorioGerenteImplementacao.listarGerente()); 
-
-			break;
-		}
-
-		}
-
 	}
-
 }

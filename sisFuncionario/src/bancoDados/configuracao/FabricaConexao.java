@@ -9,7 +9,8 @@ public class FabricaConexao {
 	private static String SENHA = "root"; // A senha do banco
 	private static String BANCO_URL = "jdbc:mysql://localhost:3306/sis_funcionario?useTimezone=true&serverTimezone=UTC";//URL DO BANCO
 	
-	public Connection criarConexaoSisFuncionario() {
+	//Metodo da Classe
+	public static Connection criarConexaoSisFuncionario() {
 		
 		Connection conexao = null;
 		

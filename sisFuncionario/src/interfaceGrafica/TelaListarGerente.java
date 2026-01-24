@@ -2,11 +2,15 @@ package interfaceGrafica;
 
 import java.util.List;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
+import controlador.ControladorTelaListarGerente;
 import entidade.Gerente;
 
 public class TelaListarGerente {
@@ -44,15 +48,33 @@ public class TelaListarGerente {
 		tabelaGerentes.setSize(1000,1000);
 		tabelaGerentes.setBounds(30,40,300,300);
 		
+		JPanel panelListarGerente = new JPanel();
+		
+		
+		
 		JScrollPane scrollPaneListarGerente = new JScrollPane(tabelaGerentes);
 		
-		JPanel panelListarGerente = new JPanel();
+		JLabel labelCpf = new JLabel("Digite o CPF");
+		panelListarGerente.add(labelCpf);
+		
+		JTextField textCpf = new JTextField(10);
+		panelListarGerente.add(textCpf);
+		
+		JButton botaoDetalhar = new JButton("Detalhar");
+		panelListarGerente.add(botaoDetalhar);
+		
 		panelListarGerente.add(scrollPaneListarGerente);
 		
-		frameListarGerentes.add(panelListarGerente);
 		
-	
+		frameListarGerentes.add(panelListarGerente);
+		frameListarGerentes.setLocationRelativeTo(null);
 		frameListarGerentes.setVisible(true);
+		
+		ControladorTelaListarGerente controladorTelaListar = new ControladorTelaListarGerente(textCpf, listaGerentes);
+		botaoDetalhar.addActionListener(controladorTelaListar);
+		
+		
+		
 		
 		
 	}

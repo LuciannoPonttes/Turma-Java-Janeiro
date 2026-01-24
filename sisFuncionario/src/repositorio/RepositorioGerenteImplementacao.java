@@ -7,18 +7,19 @@ import entidade.Gerente;
 
 public class RepositorioGerenteImplementacao implements RepositorioGerente {
 
-	DaoGerente daoGerente = new DaoGerente();
+	 
 	
 	@Override
 	public boolean salvarGerente(Gerente gerente) {
-		return daoGerente.salvarGerenteNobanco(gerente);
+		return DaoGerente.salvarGerenteNobanco(gerente);
 	}
 
 	@Override
 	public List<Gerente> listarGerente() {
-		
-		return daoGerente.listarGerenteDoBanco();
+		return DaoGerente.listarGerenteDoBanco();
 	}
+
+	
 
 	
 	

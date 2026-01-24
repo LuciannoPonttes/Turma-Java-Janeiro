@@ -21,7 +21,7 @@ public abstract class Pessoa {
 	
 	
 	// Validação basica de cpf
-	public boolean isCpfValido(String cpf) {
+	public boolean isCpfValido() {
 		
 		
 		if (cpf == null) return false;

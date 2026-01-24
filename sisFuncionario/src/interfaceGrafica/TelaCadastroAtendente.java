@@ -4,7 +4,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import controlador.ControladorTelaCadastroAtendente;
@@ -49,6 +48,9 @@ public class TelaCadastroAtendente {
 		JButton botaoMenuInicial = new JButton("Menu Inicial");
 		panelAtendente.add(botaoMenuInicial);
 		
+		JButton botaoListar = new JButton("Listar");
+		panelAtendente.add(botaoListar);
+		
 		
 		frameCadastroAtendente.add(panelAtendente);
 		frameCadastroAtendente.setLocationRelativeTo(null);
@@ -57,6 +59,7 @@ public class TelaCadastroAtendente {
 		ControladorTelaCadastroAtendente controladorTelaCadastroAtendente = new ControladorTelaCadastroAtendente(textNome, textCpf, textSetor, frameTelaPrincipal, frameCadastroAtendente );
 		botaoCadastrarAtendente.addActionListener(controladorTelaCadastroAtendente);
 		botaoMenuInicial.addActionListener(controladorTelaCadastroAtendente);
+		botaoListar.addActionListener(controladorTelaCadastroAtendente);
 		
 		
 		
