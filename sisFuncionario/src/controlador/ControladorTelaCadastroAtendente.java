@@ -2,8 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -11,6 +10,7 @@ import javax.swing.JTextField;
 import entidade.Atendente;
 import interfaceGrafica.TelaListarAtendente;
 import repositorio.RepositorioAtendenteImplementacao;
+import validacao.Validacao;
 
 public class ControladorTelaCadastroAtendente implements ActionListener {
 
@@ -44,18 +44,28 @@ public class ControladorTelaCadastroAtendente implements ActionListener {
 				atendente.setNome(nome.getText());
 				atendente.setCpf(cpf.getText());
 				atendente.setSetor(setor.getText());
-	
-				if (repositorioAtendenteImplementacao.salvarAtendente(atendente)) {
-	
-					JOptionPane.showMessageDialog(null, "Foi salvo com sucesso!!");
-	
-					nome.setText(null);
-					cpf.setText(null);
-					setor.setText(null);
-	
-				} else {
-					JOptionPane.showMessageDialog(null, "Não foi salvo com sucesso!!!!!");
+				
+				String resultadoValidacao = Validacao.validaAtendente(atendente);
+				
+				if(resultadoValidacao == null) {
+					if (repositorioAtendenteImplementacao.salvarAtendente(atendente)) {
+						
+						JOptionPane.showMessageDialog(null, "Foi salvo com sucesso!!");
+		
+						nome.setText(null);
+						cpf.setText(null);
+						setor.setText(null);
+		
+					} else {
+						JOptionPane.showMessageDialog(null, "Não foi salvo com sucesso!!!!!");
+					}
+					
+					
+				}else {
+					JOptionPane.showMessageDialog(null, resultadoValidacao);
 				}
+	
+				
 				break;
 	
 				}
@@ -65,6 +75,7 @@ public class ControladorTelaCadastroAtendente implements ActionListener {
 					break;
 				}
 				case "Listar": {
+					frameCadastroAtendente.setVisible(false);
 					telaListarAtendente.listarAtendente(repositorioAtendenteImplementacao.listarAtendente());
 					break;
 				}

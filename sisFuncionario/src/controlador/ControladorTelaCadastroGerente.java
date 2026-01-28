@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import entidade.Gerente;
 import interfaceGrafica.TelaListarGerente;
 import repositorio.RepositorioGerenteImplementacao;
-import validacao.GerenteValidacao;
+import validacao.Validacao;
 
 public class ControladorTelaCadastroGerente implements ActionListener {
 
@@ -45,7 +45,7 @@ public class ControladorTelaCadastroGerente implements ActionListener {
 				gerente.setGerencia(gerencia.getText());
 				
 				//Pensar em refatorar mais pra frente
-				String resultadoValidacao = GerenteValidacao.validaGerente(gerente);
+				String resultadoValidacao = Validacao.validaGerente(gerente);
 				
 				if(resultadoValidacao == null) {
 					if (repositorioGerenteImplementacao.salvarGerente(gerente)) {

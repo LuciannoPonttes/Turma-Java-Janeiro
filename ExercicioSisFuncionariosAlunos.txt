@@ -40,3 +40,17 @@ Registre o Assistente administrativo em um banco de dados chamado sis_funcionari
 Parte 7
 
 Crie a pagina de listar o Supervisor Auxiliar 
+
+Parte 8
+
+Crie a pagina de detalhar Gerente
+
+
+
+##########################################################################################DESAFIO PRA QUEM TEMPO #########################################################
+
+Crie a tela de Editar(Alterar o gerente)
+
+Parte 9
+
+Validar os campos dos formulário e padronizar os textos no banco(tudo maiusculo)

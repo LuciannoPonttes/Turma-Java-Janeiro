@@ -41,7 +41,7 @@ public class TelaListarAtendente {
 		String [] nomeColunas = {"CPF", "NOME", "SETOR"};
 		
 		JFrame frameListarAtendente = new JFrame();
-		frameListarAtendente.setSize(475, 450);
+		frameListarAtendente.setSize(550, 500);
 		JPanel panelListarAtendente = new JPanel();
 		
 		JTable tabelaAtendente = new JTable(tabelaString, nomeColunas);
@@ -59,6 +59,14 @@ public class TelaListarAtendente {
 		JButton botaoDetalhar = new JButton("Detalhar");
 		panelListarAtendente.add(botaoDetalhar);
 		
+		JButton botaoAlterar = new JButton("Alterar");
+		panelListarAtendente.add(botaoAlterar);
+		
+		JButton botaoDeletar = new JButton("Deletar");
+		panelListarAtendente.add(botaoDeletar);
+		
+		JButton botaoVoltar = new JButton("Voltar");
+		panelListarAtendente.add(botaoVoltar);
 		
 		panelListarAtendente.add(scrollPaneListarAtendente);
 		
@@ -66,8 +74,12 @@ public class TelaListarAtendente {
 		frameListarAtendente.setLocationRelativeTo(null);
 		frameListarAtendente.setVisible(true);
 		
-		ControladorTelaListarAtendente controladorTelaListarAtendente = new ControladorTelaListarAtendente(textCpf, listaAtendente);
+		ControladorTelaListarAtendente controladorTelaListarAtendente = new ControladorTelaListarAtendente(textCpf, listaAtendente,frameListarAtendente);
 		botaoDetalhar.addActionListener(controladorTelaListarAtendente);
+		botaoAlterar.addActionListener(controladorTelaListarAtendente);
+		botaoDeletar.addActionListener(controladorTelaListarAtendente);
+		botaoVoltar.addActionListener(controladorTelaListarAtendente);
+		
 		
 		
 		
