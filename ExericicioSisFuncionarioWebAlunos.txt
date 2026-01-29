@@ -1,0 +1,15 @@
+PARTE 1 
+
+COM BASE NO EXERCICIO SIS-FUNCIONARIO FAÇA O REGISTRO DO:
+	Pessoa
+	Nome
+	Cpf
+	E-mail
+
+Supervisor Auxiliar 
+	Patio
+
+
+Assistente administrativo
+	Escritório
+
