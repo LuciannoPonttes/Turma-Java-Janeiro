@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Gerente;
-import repository.RepositorioGerente;
 import repository.RepositorioGerenteImplementacao;
 
 /**
@@ -26,12 +25,21 @@ public class GerenteController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	
+	//Apresenta a pagina do Crud de Gerente com a lista sempre atualizada
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RepositorioGerenteImplementacao gerenteImplementacao = new RepositorioGerenteImplementacao();
 		
-		request.setAttribute("listaGerentes", gerenteImplementacao.listarGerente());
+		String acao = request.getParameter("acao");
+		String cpf = request.getParameter("cpf");
 		
+		if("deletar".equals(acao) && cpf != null && !cpf.isEmpty()  ) {
+			gerenteImplementacao.deletarGerente(cpf);
+			
+		}
+		
+		
+		
+		request.setAttribute("listaGerentes", gerenteImplementacao.listarGerente());
 		request.getRequestDispatcher("/GerenteCrud.jsp").forward(request, response);//Envia o usuario para a JSP
 		
 		

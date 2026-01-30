@@ -8,7 +8,18 @@ import model.Atendente;
 
 
 public class RepositorioAtendenteImplementacao implements RepositorioAtendente {
+	
+	@Override
+	public boolean deletarAtendente(String cpf) {
+		return DaoAtendente.deletarAssistente(cpf);
+	}
 
+	@Override
+	public Atendente buscarPorAtendente(String cpf) {
+		// TODO Auto-generated method stub
+		return DaoAtendente.buscarPorCpf(cpf);
+	}
+	
 	
 	@Override
 	public boolean salvarAtendente(Atendente atendente) {
@@ -35,10 +46,6 @@ public class RepositorioAtendenteImplementacao implements RepositorioAtendente {
 		return texto.toUpperCase();
 	}
 
-	@Override
-	public boolean deletarAtendente(String cpf) {
-		return DaoAtendente.deletarAssistente(cpf);
-	}
-	
+
 
 }

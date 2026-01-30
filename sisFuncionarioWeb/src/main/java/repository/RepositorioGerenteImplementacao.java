@@ -20,6 +20,11 @@ public class RepositorioGerenteImplementacao implements RepositorioGerente {
 		return DaoGerente.listarGerenteDoBanco();
 	}
 
+	@Override
+	public boolean deletarGerente(String cpf) {
+		return DaoGerente.deletarDeletar(cpf);
+	}
+
 	
 
 	

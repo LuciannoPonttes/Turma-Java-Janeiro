@@ -11,5 +11,6 @@ public interface RepositorioAtendente {
 	public List<Atendente> listarAtendente ();
 	public boolean alterarAtendente(Atendente atendente);
 	public boolean deletarAtendente(String cpf);
+	public Atendente buscarPorAtendente(String cpf);
 
 }

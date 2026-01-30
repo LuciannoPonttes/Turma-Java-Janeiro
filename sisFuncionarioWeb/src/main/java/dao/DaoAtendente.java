@@ -183,5 +183,43 @@ public class DaoAtendente {
 
 		return deletar;
 	}
+	
+	public static Atendente buscarPorCpf(String cpf) {
+
+	    Atendente atendente = null;
+	    Connection conectar = null;
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+
+	    String sql = "SELECT cpf, nome, setor FROM atendente WHERE cpf = ?";
+
+	    try {
+	        conectar = FabricaConexao.criarConexaoSisFuncionario();
+	        ps = conectar.prepareStatement(sql);
+	        ps.setString(1, cpf);
+
+	        rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	            atendente = new Atendente();
+	            atendente.setCpf(rs.getString("cpf"));
+	            atendente.setNome(rs.getString("nome"));
+	            atendente.setSetor(rs.getString("setor"));
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) rs.close();
+	            if (ps != null) ps.close();
+	            if (conectar != null) conectar.close();
+	        } catch (Exception e2) {
+	            System.out.println("Não foi possível fechar a conexão!");
+	        }
+	    }
+
+	    return atendente; // retorna null se não encontrar
+	}
 
 }

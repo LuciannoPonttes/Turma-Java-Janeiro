@@ -45,6 +45,7 @@
 				<th>CPF</th>
 				<th>NOME</th>
 				<th>SETOR</th>
+				<th>ACOES</th>
 			</tr>
 
 			<%
@@ -57,8 +58,23 @@
 					<td><%= atendente.getCpf() %></td>
 					<td><%= atendente.getNome() %></td>
 					<td><%= atendente.getSetor() %></td>
+					<td>
+						<form method="get" action="<%= request.getContextPath() %>/AtendenteController"
+							style="display:inline;">
+							<input type="hidden" name="acao" value="deletar" >
+							<input type="hidden" name="cpf" value="<%= atendente.getCpf()%>">
+							<button type="submit" onclick="return confirm('Tem certeza que deseja deletar?');">
+								Deletar
+							</button>
+						
+						
+						
+						
+						</form>
+						
+					</td>
 				</tr>
-		<%
+			<%
 				}
 			}
 		%>

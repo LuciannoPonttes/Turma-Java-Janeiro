@@ -115,5 +115,41 @@ public class DaoGerente {
 	}
 	
 	
+	public static boolean deletarDeletar(String cpf) {
+
+		Boolean deletar = false;
+		Connection conectar = null;
+		PreparedStatement preparedStatement = null;
+		String comandoSqlString = "delete from gerente where cpf = ? ";
+
+		try {
+			conectar = FabricaConexao.criarConexaoSisFuncionario();
+			preparedStatement = conectar.prepareStatement(comandoSqlString);
+			preparedStatement.setString(1, cpf);
+			preparedStatement.execute();
+
+			deletar = true;
+
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				if (conectar != null) {
+					conectar.close();
+
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return deletar;
+	}
+	
 
 }

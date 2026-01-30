@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Atendente;
-import repository.RepositorioAtendente;
 import repository.RepositorioAtendenteImplementacao;
 
 /**
@@ -32,8 +31,16 @@ public class AtendenteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RepositorioAtendenteImplementacao atendenteImplementacao = new RepositorioAtendenteImplementacao();
 		
-		request.setAttribute("listaAtendentes", atendenteImplementacao.listarAtendente());//Cria o objeto  listaAtendentes na Requisição
+		String acao = request.getParameter("acao");
+		String cpf = request.getParameter("cpf");
 		
+		//SE FOR DELETAR
+		if("deletar".equals(acao) && cpf != null && !cpf.isEmpty()) {
+			atendenteImplementacao.deletarAtendente(cpf);
+			
+		}
+		
+		request.setAttribute("listaAtendentes", atendenteImplementacao.listarAtendente());//Cria o objeto  listaAtendentes na Requisição
 		request.getRequestDispatcher("/AtendenteCrud.jsp").forward(request, response);//Envia o usuario para a JSP
 		
 				
