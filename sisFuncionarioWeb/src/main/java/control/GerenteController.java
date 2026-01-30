@@ -28,7 +28,11 @@ public class GerenteController extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RepositorioGerenteImplementacao gerenteImplementacao = new RepositorioGerenteImplementacao();
 		
+		request.setAttribute("listaGerentes", gerenteImplementacao.listarGerente());
+		
+		request.getRequestDispatcher("/GerenteCrud.jsp").forward(request, response);//Envia o usuario para a JSP
 		
 		
 		
@@ -41,13 +45,13 @@ public class GerenteController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		
 		Gerente gerente = new Gerente();
 		gerente.setCpf(request.getParameter("cpf"));
 		gerente.setNome(request.getParameter("nome"));
 		gerente.setGerencia(request.getParameter("gerencia"));
 		RepositorioGerenteImplementacao repositorioGerente = new RepositorioGerenteImplementacao();
 		repositorioGerente.salvarGerente(gerente);
+		response.sendRedirect(request.getContextPath()+"/GerenteController"); // Envia o usuario para a AtendenteController
 	}
 
 }

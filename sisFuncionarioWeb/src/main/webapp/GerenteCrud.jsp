@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="java.util.List" %>
+<%@ page import="model.Gerente" %>  
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,6 +32,34 @@
 	
 	
 	</form>
+	
+	<br>
+	
+	<h3>LISTA DE ATENDENTES</h3>
+	
+	<table border="1" cellpadding="5">
+			<tr>
+				<th>CPF</th>
+				<th>NOME</th>
+				<th>GERENCIA</th>
+			</tr>
+
+			<%
+				List<Gerente> lista = (List<Gerente>) request.getAttribute("listaGerentes");// Busca a lista de Atendentes na memoria do servidor(request)
+	
+				if (lista != null) {
+					for (Gerente gerente : lista) {
+			%>
+				<tr>
+					<td><%= gerente.getCpf() %></td>
+					<td><%= gerente.getNome() %></td>
+					<td><%= gerente.getGerencia() %></td>
+				</tr>
+		<%
+				}
+			}
+		%>
+	</table>
 
 </body>
 </html>

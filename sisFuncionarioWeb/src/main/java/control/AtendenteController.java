@@ -30,8 +30,13 @@ public class AtendenteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RepositorioAtendenteImplementacao atendenteImplementacao = new RepositorioAtendenteImplementacao();
+		
+		request.setAttribute("listaAtendentes", atendenteImplementacao.listarAtendente());//Cria o objeto  listaAtendentes na Requisição
+		
+		request.getRequestDispatcher("/AtendenteCrud.jsp").forward(request, response);//Envia o usuario para a JSP
+		
+				
 	}
 
 	/**
@@ -42,9 +47,9 @@ public class AtendenteController extends HttpServlet {
 		atendente.setCpf(request.getParameter("cpf"));
 		atendente.setNome(request.getParameter("nome"));
 		atendente.setSetor(request.getParameter("setor"));
-		
 		RepositorioAtendenteImplementacao repositorioAtendente = new RepositorioAtendenteImplementacao();
 		repositorioAtendente.salvarAtendente(atendente);
+		response.sendRedirect(request.getContextPath()+"/AtendenteController"); // Envia o usuario para a AtendenteController
 	}
 
 }
