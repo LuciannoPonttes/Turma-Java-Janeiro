@@ -16,7 +16,6 @@ public class RepositorioAtendenteImplementacao implements RepositorioAtendente {
 
 	@Override
 	public Atendente buscarPorAtendente(String cpf) {
-		// TODO Auto-generated method stub
 		return DaoAtendente.buscarPorCpf(cpf);
 	}
 	

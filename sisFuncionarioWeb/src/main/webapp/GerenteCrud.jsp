@@ -3,6 +3,7 @@
     
 <%@ page import="java.util.List" %>
 <%@ page import="model.Gerente" %>  
+<%@ page import="model.Atendente" %>  
     
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,17 @@
 <title>Cadastro de Gerente</title>
 </head>
 <body>
+
+	<% 
+		Atendente usuario = (Atendente)session.getAttribute("usuarioLogado");
+		if(usuario == null){
+			response.sendRedirect("login.jsp");
+			return;
+			
+		}
+	
+	%>
+	<h2>Bem-vindo, <%= usuario.getNome() %>!</h2>
 
 	<h2>GERENTE CRUD</h2>
 	

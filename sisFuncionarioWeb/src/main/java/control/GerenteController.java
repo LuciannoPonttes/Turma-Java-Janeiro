@@ -39,7 +39,7 @@ public class GerenteController extends HttpServlet {
 		
 		
 		
-		request.setAttribute("listaGerentes", gerenteImplementacao.listarGerente());
+		request.setAttribute("listaGerentes", gerenteImplementacao.listarGerente());// Cria na request o objeto lista
 		request.getRequestDispatcher("/GerenteCrud.jsp").forward(request, response);//Envia o usuario para a JSP
 		
 		

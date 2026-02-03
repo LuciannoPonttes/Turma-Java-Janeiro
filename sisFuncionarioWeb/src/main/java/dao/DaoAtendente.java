@@ -17,7 +17,7 @@ public class DaoAtendente {
 
 		Connection connection = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
-		String comandoSqlInsert = "insert into atendente (cpf, nome, setor) values (?, ?, ?)"; // Base do comando SQL
+		String comandoSqlInsert = "insert into atendente (cpf, nome, setor,senha) values (?, ?, ?,?)"; // Base do comando SQL
 
 		try {
 			connection = FabricaConexao.criarConexaoSisFuncionario(); // Recebe o objeto de conexão da
@@ -30,6 +30,7 @@ public class DaoAtendente {
 			preparaOcomandoSQL.setString(1, atendente.getCpf());// Coloca o valor no campo cpf
 			preparaOcomandoSQL.setString(2, atendente.getNome()); // Colocar o valor no campo nome
 			preparaOcomandoSQL.setString(3, atendente.getSetor()); // Colocar o valor no campo email
+			preparaOcomandoSQL.setString(4, atendente.getSenha());
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
@@ -191,7 +192,7 @@ public class DaoAtendente {
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
 
-	    String sql = "SELECT cpf, nome, setor FROM atendente WHERE cpf = ?";
+	    String sql = "SELECT cpf, nome, setor, senha FROM atendente WHERE cpf = ?";
 
 	    try {
 	        conectar = FabricaConexao.criarConexaoSisFuncionario();
@@ -205,6 +206,7 @@ public class DaoAtendente {
 	            atendente.setCpf(rs.getString("cpf"));
 	            atendente.setNome(rs.getString("nome"));
 	            atendente.setSetor(rs.getString("setor"));
+	            atendente.setSenha(rs.getString("senha"));
 	        }
 
 	    } catch (Exception e) {
