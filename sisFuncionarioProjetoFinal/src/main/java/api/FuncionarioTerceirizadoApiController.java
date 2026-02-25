@@ -81,6 +81,65 @@ public class FuncionarioTerceirizadoApiController extends HttpServlet {
 			}
 
 		}
+		
+		
+		@Override
+		protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+
+			response.setContentType("application/json; charset=UTF-8");
+			String cpf = request.getParameter("cpf");
+			String json;
+
+			if (cpf == null || repo.buscarFuncionarioTerceirizadoCpf(cpf) == null) {
+
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				response.getWriter().write("{\"status\":false,\"message\":\"Funcionario não encontrado!!\"}");
+				return;
+			}
+
+			repo.deletarTerceirizado(cpf);
+			response.getWriter().write("{\"ok\":true,\"message\":\"Funcionario deletado!!\"}");
+
+		}
+		
+		
+
+		@Override
+		protected void doPut(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+
+			String cpf = request.getParameter("cpf");
+
+			if (isBlank(cpf)) {
+				response.setStatus(HttpServletResponse.SC_BAD_GATEWAY);
+				response.getWriter().write("{\"status\":false,\"message\":\"Informe o cpf!!!\"}");
+				return;// Encerra o processo
+
+			}
+
+			FuncionarioTerceirizado funcionarioBusca = repo.buscarFuncionarioTerceirizadoCpf(cpf);
+			if (funcionarioBusca == null) {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				response.getWriter().write("{\"status\":false,\"message\":\"Atendente não encontrado!!!\"}");
+				return;
+
+			}
+
+			FuncionarioTerceirizado funcionario = jsonParaFuncionario(request);
+
+			funcionario.setCpf(cpf);
+
+			if (isBlank(funcionario.getNome()) || isBlank(funcionario.getFuncao())) {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				response.getWriter().write("{\"status\":false,\"message\":\"Nome e Função são obrigatorios!!!\"}");
+
+			}
+
+			repo.alterarTerceirizado(funcionario);
+			response.getWriter().write("{\"ok\":true,\"message\":\"Funcionario Alterado!!\"}");
+
+		}
 	
 	
 	

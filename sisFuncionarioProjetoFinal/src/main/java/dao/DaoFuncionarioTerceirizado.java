@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Funcao;
 import model.FuncionarioInterno;
 import model.FuncionarioTerceirizado;
 import util.FabricaConexao;
@@ -17,7 +18,7 @@ public class DaoFuncionarioTerceirizado {
 
 		Connection connection = null; // Cria o objeto de conexão como null
 		PreparedStatement preparaOcomandoSQL = null; // Cria o objeto que prepara o comando SQL
-		String comandoSqlInsert = "INSERT INTO funcionario_terceirado(cpf, matricula, nome, data_nascimento, funcao, empresa, custo) VALUES (?, ?, ?, ?, ?, ?, ?);"; // Base
+		String comandoSqlInsert = "INSERT INTO funcionario_terceirado(cpf, matricula, nome, data_nascimento, funcao, empresa, custo, senha) VALUES (?, ?, ?, ?, ?, ?, ?,?);"; // Base
 																																										// do
 																																										// comando
 																																										// SQL
@@ -35,9 +36,10 @@ public class DaoFuncionarioTerceirizado {
 			preparaOcomandoSQL.setString(3, funcionario.getNome()); // Colocar o valor no campo nome
 			preparaOcomandoSQL.setString(4, funcionario.getDatadataNascimento().toString()); // Colocar o valor no campo
 																								// email
-			preparaOcomandoSQL.setString(5, funcionario.getFuncao());
+			preparaOcomandoSQL.setString(5, funcionario.getFuncao().toString());
 			preparaOcomandoSQL.setString(6, funcionario.getEmpresa());
 			preparaOcomandoSQL.setString(7, funcionario.getCusto().toString());
+			preparaOcomandoSQL.setString(8, funcionario.getSenha().toString());
 
 			preparaOcomandoSQL.execute(); // Executa o comando no banco de dados
 
@@ -165,6 +167,88 @@ public class DaoFuncionarioTerceirizado {
 	    }
 
 	    return funcionarioTerceirizado; // retorna null se não encontrar
+	}
+	
+	public static boolean deletarTerceirizado(String cpf) {
+
+		Boolean deletar = false;
+		Connection conectar = null;
+		PreparedStatement preparedStatement = null;
+		String comandoSqlString = "delete from  funcionario_terceirado  where cpf = ? ";
+
+		try {
+			conectar = FabricaConexao.criarConexaoSisFuncionario();
+			preparedStatement = conectar.prepareStatement(comandoSqlString);
+			preparedStatement.setString(1, cpf);
+			preparedStatement.execute();
+
+			deletar = true;
+
+		} catch (Exception e) {
+
+		} finally {
+			try {
+				if (conectar != null) {
+					conectar.close();
+
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return deletar;
+	}
+	
+	public static boolean alterarTerceirizado(FuncionarioTerceirizado funcionario) {
+
+		Boolean resultadoBoolean = false;
+		String comandoSqlString = "UPDATE funcionario_terceirado  SET matricula = ?, nome = ?, data_nascimento = ?, funcao = ?, empresa = ?, custo = ? WHERE cpf = ?;";
+		Connection connectar = null;
+		PreparedStatement preparedStatement = null;
+
+		try {
+			connectar = FabricaConexao.criarConexaoSisFuncionario();
+
+			preparedStatement = connectar.prepareStatement(comandoSqlString);
+			preparedStatement.setString(1, funcionario.getMatricula());
+			preparedStatement.setString(2, funcionario.getNome());
+			preparedStatement.setString(3, funcionario.getDatadataNascimento());
+			preparedStatement.setString(4, funcionario.getFuncao().toString());
+			preparedStatement.setString(5, funcionario.getEmpresa().toString());
+			preparedStatement.setString(6, funcionario.getCusto().toString());
+			
+			preparedStatement.setString(7, funcionario.getCpf());
+
+			preparedStatement.execute();
+
+			resultadoBoolean = true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if (connectar != null) {
+					connectar.close();
+
+				}
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+			} catch (Exception e2) {
+				System.out.println("Não foi possivel fechar a conexão!!");
+			}
+
+		}
+
+		return resultadoBoolean;
 	}
 
 }
